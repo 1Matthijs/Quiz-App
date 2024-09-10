@@ -5,10 +5,7 @@
 ## 1.1 Indentatie
 Gebruik 4 spaties voor elke indentatie in de code.
 Vermijd het gebruik van tabs.
-## 1.2 Regelafbreking
-Maximaal 160 tekens per regel.
-Gebruik line breaks op logische plaatsen, zoals na een komma of operator.
-## 1.3 Haakjes
+## 1.2 Haakjes
 Gebruik blokhaakjes {} bij elke control flow (if, else, for, while), zelfs als deze slechts één regel bevat.
 
 
@@ -72,9 +69,9 @@ public class MyClass
 Gebruik commentaar voor alle publieke klassen en methodes.
 
 ```
-/// <summary>
+
 /// Dit is een voorbeeldmethode.
-/// </summary>
+
 public void MyMethod()
 {
     // Code
