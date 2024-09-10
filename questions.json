@@ -1,0 +1,290 @@
+[
+  {
+    "id": "2ok",
+    "question": "Wat is een programmeertaal?",
+    "answer_a": "Cobra",
+    "answer_b": "Python",
+    "answer_c": "Mamba",
+    "correct_answer": "b"
+  },
+  {
+    "id": "2ra",
+    "question": "Waar staan de beste stuurlui volgens het spreekwoord?",
+    "answer_a": "Aan land",
+    "answer_b": "Aan het roer",
+    "answer_c": "Aan wal",
+    "correct_answer": "c"
+  },
+  {
+    "id": "a5o",
+    "question": "Hoe vaak stoot een ezel zich over het algemeen aan een steen?",
+    "answer_a": "Nooit",
+    "answer_b": "Meer dan 1 keer",
+    "answer_c": "Niet 2 keer",
+    "correct_answer": "c"
+  },
+  {
+    "id": "wtj",
+    "question": "Waarheen valt een appel volgens het spreekwoord?",
+    "answer_a": "Van de boom op de grond",
+    "answer_b": "Niet ver van de boom",
+    "answer_c": "Laag bij de grond",
+    "correct_answer": "b"
+  },
+  {
+    "id": "dp3",
+    "question": "Wat ligt er op de grond in de hotelkamer van Guus Meeuwis na een nacht die je normaal alleen in films ziet?",
+    "answer_a": "Lakens en een leeg krat bier",
+    "answer_b": "De beddensprei en een lege fles wijn",
+    "answer_c": "Een lege fles wijn en kledingstukken die van jou of mij kunnen zijn",
+    "correct_answer": "c"
+  },
+  {
+    "id": "vng",
+    "question": "Hoe hoog is de toren van de grote kerk in Breda?",
+    "answer_a": "89 meter",
+    "answer_b": "97 meter",
+    "answer_c": "97.5 meter",
+    "correct_answer": "b"
+  },
+  {
+    "id": "mzn",
+    "question": "Wat is het volledige adres van de Curio vestiging in Breda waar de opleiding SD verzorgd wordt?",
+    "answer_a": "Terheijdenseweg 350, 4826 AA, Breda",
+    "answer_b": "Terheijdenseweg 355, 4826 AA, Breda",
+    "answer_c": "Terheijdenseweg 350, 4826 AB, Breda",
+    "correct_answer": "a"
+  },
+  {
+    "id": "puw",
+    "question": "Wat is het volledige adres van de Curio vestiging in Roosendaal waar de opleiding SD verzorgd wordt?",
+    "answer_a": "Knipplein 11, 4702 GN, Roosendaal",
+    "answer_b": "Knipplein 21, 4703 GN, Roosendaal",
+    "answer_c": "Knipplein 11, 4702 GM, Roosendaal",
+    "correct_answer": "a"
+  },
+  {
+    "id": "dkg",
+    "question": "Welk land heeft de meeste eilanden ter wereld?",
+    "answer_a": "Zweden",
+    "answer_b": "Indonesie",
+    "answer_c": "Hawaii",
+    "correct_answer": "a"
+  },
+  {
+    "id": "7ci",
+    "question": "Wat is de best verkochte boekenreeks van de 21e eeuw?",
+    "answer_a": "Lord of the Rings",
+    "answer_b": "Harry Potter",
+    "answer_c": "Narnia",
+    "correct_answer": "b"
+  },
+  {
+    "id": "wf4",
+    "question": "Wat gebeurde er op 20 juli 1969?",
+    "answer_a": "Apollo 11 landde op de maan",
+    "answer_b": "De Berlijnse muur viel",
+    "answer_c": "Het legendarische festival Woodstock werd gehouden",
+    "correct_answer": "a"
+  },
+  {
+    "id": "cfn",
+    "question": "Welke taal heeft de meeste woorden?",
+    "answer_a": "Spaans",
+    "answer_b": "Russisch",
+    "answer_c": "Engels",
+    "correct_answer": "c"
+  },
+  {
+    "id": "555",
+    "question": "Wat is het meest gestreamde album op Spotify?",
+    "answer_a": "Drake - Certified Lover Boy",
+    "answer_b": "Ed Sheeran - Shape of You",
+    "answer_c": "Billie Eilish - Guitar Songs",
+    "correct_answer": "b"
+  },
+  {
+    "id": "hv7",
+    "question": "Hoeveel toetsen heeft een klassieke piano?",
+    "answer_a": "52",
+    "answer_b": "66",
+    "answer_c": "88",
+    "correct_answer": "c"
+  },
+  {
+    "id": "9uv",
+    "question": "Welke Duitse coureur heeft de meeste Formule 1-kampioenschappen gewonnen?",
+    "answer_a": "Michael Schumacher",
+    "answer_b": "Max Verstappen",
+    "answer_c": "Lewis Hamilton",
+    "correct_answer": "a"
+  },
+  {
+    "id": "epo",
+    "question": "Wanneer werd Netflix opgericht?",
+    "answer_a": "1997",
+    "answer_b": "2001",
+    "answer_c": "2009",
+    "correct_answer": "a"
+  },
+  {
+    "id": "i3a",
+    "question": "Wat was de meest bekeken serie op Netflix in 2019?",
+    "answer_a": "Squid Game",
+    "answer_b": "Stranger Things",
+    "answer_c": "Walking Dead",
+    "correct_answer": "b"
+  },
+  {
+    "id": "79i",
+    "question": "Wat is Disney's eerste film?",
+    "answer_a": "Assepoester",
+    "answer_b": "Doornroosje",
+    "answer_c": "Sneeuwwitje",
+    "correct_answer": "c"
+  },
+  {
+    "id": "4up",
+    "question": "Welke achternaam komt in Nederland het meest voor?",
+    "answer_a": "De Jong",
+    "answer_b": "Janssen",
+    "answer_c": "De Vries",
+    "correct_answer": "c"
+  },
+  {
+    "id": "wy7",
+    "question": "Bij welke provincie hoort het waddeneiland Ameland?",
+    "answer_a": "Noord-Holland",
+    "answer_b": "Friesland",
+    "answer_c": "Groningen",
+    "correct_answer": "b"
+  },
+  {
+    "id": "qcn",
+    "question": "Wat is de hardste steen op aarde?",
+    "answer_a": "Diamant",
+    "answer_b": "Robijn",
+    "answer_c": "Opaal",
+    "correct_answer": "a"
+  },
+  {
+    "id": "mf5",
+    "question": "Wat was de naam van de man die als eerste een voet op de maan zette?",
+    "answer_a": "Elon Musk",
+    "answer_b": "Neil Armstrong",
+    "answer_c": "Buddy Vedder",
+    "correct_answer": "b"
+  },
+  {
+    "id": "bky",
+    "question": "Waar staat het getal 3.14 voor?",
+    "answer_a": "Delta",
+    "answer_b": "Pi",
+    "answer_c": "Alfa",
+    "correct_answer": "b"
+  },
+  {
+    "id": "7uu",
+    "question": "Welke letter staat voor 1000?",
+    "answer_a": "G",
+    "answer_b": "K",
+    "answer_c": "Z",
+    "correct_answer": "b"
+  },
+  {
+    "id": "9kk",
+    "question": "In welke maateenheid wordt een beeldscherm aangeduid?",
+    "answer_a": "Diameter",
+    "answer_b": "Feet",
+    "answer_c": "Inch",
+    "correct_answer": "c"
+  },
+  {
+    "id": "22n",
+    "question": "Welk dier komt daar uit de spreekwoordelijke mouw?",
+    "answer_a": "Slang",
+    "answer_b": "Aap",
+    "answer_c": "Paard",
+    "correct_answer": "b"
+  },
+  {
+    "id": "wah",
+    "question": "Welke twee docenten hebben dezelfde achternaam?",
+    "answer_a": "Joost & Michel",
+    "answer_b": "Kitty & Vincent",
+    "answer_c": "Joep & Fedde",
+    "correct_answer": "c"
+  },
+  {
+    "id": "wtg",
+    "question": "Hoeveel toetsen zitten er op een qwerty toetsenbord met numeriek gedeelte?",
+    "answer_a": "105",
+    "answer_b": "104",
+    "answer_c": "101",
+    "correct_answer": "b"
+  },
+  {
+    "id": "iu7",
+    "question": "Voordat onze school Curio heette hadden we een andere naam. Welke naam?",
+    "answer_a": "ROC West-Brabant",
+    "answer_b": "Radevliet College",
+    "answer_c": "Zomius College",
+    "correct_answer": "a"
+  },
+  {
+    "id": "kxt",
+    "question": "Hoeveel studenten hebben zich dit jaar opgegeven voor het introkamp?",
+    "answer_a": "82",
+    "answer_b": "86",
+    "answer_c": "91",
+    "correct_answer": "a"
+  },
+  {
+    "id": "s46",
+    "question": "Wat is de naam van de manager van onze opleiding?",
+    "answer_a": "Wiro Verdiesen",
+    "answer_b": "George Veermans",
+    "answer_c": "Corne Wagtmans",
+    "correct_answer": "b"
+  },
+  {
+    "id": "kog",
+    "question": "Los op: als 1=2, 3=18, 5=50, 4=32, wat is dan 6?",
+    "answer_a": "72",
+    "answer_b": "84",
+    "answer_c": "96",
+    "correct_answer": "a"
+  },
+  {
+    "id": "rix",
+    "question": "Piloot Bart gaat voor een lange vlucht richting het zuiden. Na een poosje pakt hij een bocht van 90 graden naar links en daarna een bocht van 45 graden naar links. In welke richting is Bart nu aan het vliegen?",
+    "answer_a": "Zuid-Oost",
+    "answer_b": "Noord-West",
+    "answer_c": "Noord-Oost",
+    "correct_answer": "c"
+  },
+  {
+    "id": "9v6",
+    "question": "Hoeveel strepen staan er op de Amerikaanse vlag?",
+    "answer_a": "10",
+    "answer_b": "13",
+    "answer_c": "16",
+    "correct_answer": "b"
+  },
+  {
+    "id": "sei",
+    "question": "Hoeveel toetsen heeft een klassieke piano?",
+    "answer_a": "44",
+    "answer_b": "66",
+    "answer_c": "88",
+    "correct_answer": "c"
+  },
+  {
+    "id": "axa",
+    "question": "Welke programmeertaal wordt hier omschreven? Een multi-inzetbare gecompileerde taal ontwikkeld door Bjarne Stroustrup in 1983. Het heeft de ontwikkeling van veel andere talen beïnvloed.",
+    "answer_a": "C",
+    "answer_b": "C++",
+    "answer_c": "C#",
+    "correct_answer": "b"
+  }
+]
