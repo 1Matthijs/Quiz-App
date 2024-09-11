@@ -123,6 +123,7 @@ namespace Quiz_app
         {
             Console.WriteLine("welkom op het teacher dashboard");
             Console.WriteLine("[1]  upload vragen");
+            Console.WriteLine("[2] geef feedback");
             string choice = Console.ReadLine();
             if(choice == "1")
             {
@@ -130,6 +131,10 @@ namespace Quiz_app
                 Console.WriteLine("copier het pad naar het csv bestand en plak het hier");
                 string filePath = Console.ReadLine();
                 quiz.LoadQuestionsFromCSV(filePath, context);
+            }
+            if(choice == "2")
+            {
+                GiveFeedbackToStudent(context);
             }
         }
         static void StudentDashboard(User user, QuizContext context)
@@ -185,6 +190,62 @@ namespace Quiz_app
 
             Console.WriteLine($"\nJe hebt {correctAnswers} van de {context.Questions.Count()} vragen correct beantwoord.");
         }
+        static void GiveFeedbackToStudent(QuizContext context)
+        {
+            {
+                
+                var quizResults = context.QuizResults.ToList();
+                var users = context.Users.ToList();
+
+                if (!quizResults.Any())
+                {
+                    Console.WriteLine("Er zijn nog geen quizresultaten.");
+                    return;
+                }
+
+                Console.WriteLine("Lijst van studenten en hun resultaten:");
+                for (int i = 0; i < quizResults.Count; i++)
+                {
+                    var student = users.SingleOrDefault(u => u.UserId == quizResults[i].UserId);
+                    Console.WriteLine($"{i + 1}. Student: {student.Username}, Correcte antwoorden: {quizResults[i].CorrectAnswers}");
+                }
+
+              
+                Console.Write("\nKies een student om feedback te geven (voer het nummer in): ");
+                if (int.TryParse(Console.ReadLine(), out int studentIndex) && studentIndex > 0 && studentIndex <= quizResults.Count)
+                {
+                    var selectedResult = quizResults[studentIndex - 1];
+                    var selectedStudent = users.SingleOrDefault(u => u.UserId == selectedResult.UserId);
+
+                    Console.WriteLine($"\nJe hebt gekozen om feedback te geven aan: {selectedStudent.Username}, Correcte antwoorden: {selectedResult.CorrectAnswers}");
+
+                  
+                    var studentAnswers = context.StudentAnswers.Where(a => a.QuizResultId == selectedResult.QuizResultId).ToList();
+
+                    foreach (var answer in studentAnswers)
+                    {
+                        var question = context.Questions.SingleOrDefault(q => q.Id == answer.QuestionId);
+                        Console.WriteLine($"\nVraag: {question.Text}");
+                        Console.WriteLine($"Antwoord gegeven: {answer.AnswerGiven.ToUpper()}, Correct: {answer.IsCorrect}");
+                        Console.Write("Geef feedback: ");
+                        var feedback = Console.ReadLine();
+
+                       
+                        answer.Feedback = feedback;
+                    }
+
+                    
+                    context.SaveChanges();
+                    Console.WriteLine("Feedback succesvol opgeslagen.");
+                }
+                else
+                {
+                    Console.WriteLine("Ongeldige keuze. Probeer het opnieuw.");
+                }
+            }
+        }
+
     }
+
 }
 
