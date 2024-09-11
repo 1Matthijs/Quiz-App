@@ -123,7 +123,8 @@ namespace Quiz_app
         {
             Console.WriteLine("welkom op het teacher dashboard");
             Console.WriteLine("[1]  upload vragen");
-            Console.WriteLine("[2] geef feedback");
+            Console.WriteLine("[2]  geef feedback");
+            Console.WriteLine("[3]  Verwijder Vragen");
             string choice = Console.ReadLine();
             if(choice == "1")
             {
@@ -136,6 +137,11 @@ namespace Quiz_app
             {
                 GiveFeedbackToStudent(context);
             }
+            if(choice == "3")
+            {
+                DeleteQuestion(context);
+            }
+            return;
         }
         static void StudentDashboard(User user, QuizContext context)
         {
@@ -194,8 +200,8 @@ namespace Quiz_app
         {
             {
                 
-                var quizResults = context.QuizResults.ToList();
-                var users = context.Users.ToList();
+                List<QuizResult> quizResults = context.QuizResults.ToList();
+                List<User> users = context.Users.ToList();
 
                 if (!quizResults.Any())
                 {
@@ -206,7 +212,7 @@ namespace Quiz_app
                 Console.WriteLine("Lijst van studenten en hun resultaten:");
                 for (int i = 0; i < quizResults.Count; i++)
                 {
-                    var student = users.SingleOrDefault(u => u.UserId == quizResults[i].UserId);
+                    User student = users.SingleOrDefault(u => u.UserId == quizResults[i].UserId);
                     Console.WriteLine($"{i + 1}. Student: {student.Username}, Correcte antwoorden: {quizResults[i].CorrectAnswers}");
                 }
 
@@ -214,21 +220,21 @@ namespace Quiz_app
                 Console.Write("\nKies een student om feedback te geven (voer het nummer in): ");
                 if (int.TryParse(Console.ReadLine(), out int studentIndex) && studentIndex > 0 && studentIndex <= quizResults.Count)
                 {
-                    var selectedResult = quizResults[studentIndex - 1];
-                    var selectedStudent = users.SingleOrDefault(u => u.UserId == selectedResult.UserId);
+                    QuizResult selectedResult = quizResults[studentIndex - 1];
+                    User selectedStudent = users.SingleOrDefault(u => u.UserId == selectedResult.UserId);
 
                     Console.WriteLine($"\nJe hebt gekozen om feedback te geven aan: {selectedStudent.Username}, Correcte antwoorden: {selectedResult.CorrectAnswers}");
 
                   
-                    var studentAnswers = context.StudentAnswers.Where(a => a.QuizResultId == selectedResult.QuizResultId).ToList();
+                    List<StudentAnswer> studentAnswers = context.StudentAnswers.Where(a => a.QuizResultId == selectedResult.QuizResultId).ToList();
 
-                    foreach (var answer in studentAnswers)
+                    foreach (StudentAnswer answer in studentAnswers)
                     {
-                        var question = context.Questions.SingleOrDefault(q => q.Id == answer.QuestionId);
+                        Question question = context.Questions.SingleOrDefault(q => q.Id == answer.QuestionId);
                         Console.WriteLine($"\nVraag: {question.Text}");
                         Console.WriteLine($"Antwoord gegeven: {answer.AnswerGiven.ToUpper()}, Correct: {answer.IsCorrect}");
                         Console.Write("Geef feedback: ");
-                        var feedback = Console.ReadLine();
+                        string feedback = Console.ReadLine();
 
                        
                         answer.Feedback = feedback;
@@ -237,6 +243,53 @@ namespace Quiz_app
                     
                     context.SaveChanges();
                     Console.WriteLine("Feedback succesvol opgeslagen.");
+                }
+                else
+                {
+                    Console.WriteLine("Ongeldige keuze. Probeer het opnieuw.");
+                }
+            }
+        }
+        static void DeleteQuestion(QuizContext context)
+        {
+            {
+                
+                List<Question> questions = context.Questions.ToList();
+
+                if (!questions.Any())
+                {
+                    Console.WriteLine("Er zijn geen vragen om te verwijderen.");
+                    return;
+                }
+
+                Console.WriteLine("Lijst van vragen:");
+                for (int i = 0; i < questions.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. Vraag: {questions[i].Text}");
+                }
+
+             
+                Console.Write("\nKies een vraag om te verwijderen (voer het nummer in): ");
+                if (int.TryParse(Console.ReadLine(), out int questionIndex) && questionIndex > 0 && questionIndex <= questions.Count)
+                {
+                    Question selectedQuestion = questions[questionIndex - 1];
+
+                  
+                    Console.WriteLine($"\nWeet je zeker dat je de vraag wilt verwijderen: '{selectedQuestion.Text}'? (y/n)");
+                    string confirmation = Console.ReadLine();
+
+                    if (confirmation.ToLower() == "y")
+                    {
+                       
+                        context.Questions.Remove(selectedQuestion);
+                        context.SaveChanges();
+
+                        Console.WriteLine("Vraag succesvol verwijderd.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Verwijderen geannuleerd.");
+                    }
                 }
                 else
                 {
