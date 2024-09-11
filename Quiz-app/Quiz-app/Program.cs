@@ -21,6 +21,7 @@ namespace Quiz_app
 
                 while (program)
                 {
+                    Console.Clear();
                     Console.WriteLine("Welkom bij de StudentQuizApp!");
                     Console.WriteLine("1. Inloggen");
                     Console.WriteLine("2. Registreren");
@@ -58,6 +59,7 @@ namespace Quiz_app
 
         static User Login(QuizContext context)
         {
+            Console.Clear();
             bool login = true;
             while (login)
             {
@@ -116,11 +118,12 @@ namespace Quiz_app
             context.Users.Add(user);
             context.SaveChanges();
             Console.WriteLine("Registratie succesvol! Je kunt nu inloggen.");
-
+            next();
 
         }
         static void TeacherDashBoard(User user, QuizContext context)
         {
+            Console.Clear();
             Console.WriteLine("welkom op het teacher dashboard");
             Console.WriteLine("[1]  upload vragen");
             Console.WriteLine("[2]  geef feedback");
@@ -144,7 +147,7 @@ namespace Quiz_app
             return;
         }
         static void StudentDashboard(User user, QuizContext context)
-        {
+        {   Console.Clear();
             Console.WriteLine("\nWelkom student!");
             Console.WriteLine("[1]  Maak quiz");
             Console.WriteLine("[2]  zie foute antwoorden");
@@ -161,6 +164,7 @@ namespace Quiz_app
 
             static void MakeQuiz(User user, QuizContext context)
         {
+            Console.Clear();
             Console.WriteLine("\nDe quiz gaat beginnen!");
 
             int correctAnswers = 0;
@@ -204,17 +208,20 @@ namespace Quiz_app
                 {
                     Console.WriteLine($"Fout! Het juiste antwoord is {question.CorrectAnswer.ToString().ToUpper()}.");
                 }
+                next();
             }
 
             quizResult.CorrectAnswers = correctAnswers;
             context.SaveChanges();
 
             Console.WriteLine($"\nJe hebt {correctAnswers} van de {context.Questions.Count()} vragen correct beantwoord.");
+            next();
         }
         static void GiveFeedbackToStudent(QuizContext context)
         {
             {
-                
+                Console.Clear();
+               
                 List<QuizResult> quizResults = context.QuizResults.ToList();
                 List<User> users = context.Users.ToList();
 
@@ -253,22 +260,25 @@ namespace Quiz_app
 
                        
                         answer.Feedback = feedback;
+                        next();
                     }
 
                     
                     context.SaveChanges();
                     Console.WriteLine("Feedback succesvol opgeslagen.");
+                   
                 }
                 else
                 {
                     Console.WriteLine("Ongeldige keuze. Probeer het opnieuw.");
                 }
+                next();
             }
         }
         static void DeleteQuestion(QuizContext context)
         {
             {
-                
+                Console.Clear();
                 List<Question> questions = context.Questions.ToList();
 
                 if (!questions.Any())
@@ -310,6 +320,7 @@ namespace Quiz_app
                 {
                     Console.WriteLine("Ongeldige keuze. Probeer het opnieuw.");
                 }
+                next();
             }
         }
         static void ShowIncorrectAnswersForStudent(User user, QuizContext context)
@@ -319,7 +330,7 @@ namespace Quiz_app
                 QuizResult quizResult = context.QuizResults
                                         .Where(qr => qr.UserId == user.UserId)
                                         .FirstOrDefault();
-
+                Console.Clear();
                 if (quizResult == null)
                 {
                     Console.WriteLine("Geen quizresultaten gevonden voor deze student.");
@@ -373,9 +384,14 @@ namespace Quiz_app
                 double percentage = ((double)correctAnswers / totalQuestions) * 100;
                 Console.WriteLine($"\nU heeft {correctAnswers}/{totalQuestions} correcte antwoorden.");
                 Console.WriteLine($"Percentage: {percentage:F2}%");
-
-                
-            }
+                next();
+            } 
+        }
+        static void next()
+        {
+            Console.Write("\nklik op enter om door te gaan");
+            Console.ReadLine();
+            Console.Clear();
         }
 
     }
