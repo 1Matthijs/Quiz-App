@@ -39,6 +39,7 @@ namespace Quiz_app
                             else
                             {
                                 Console.WriteLine("login as Student succes");
+                                StudentDashboard(user, context);
 
                             }
                         }
@@ -130,6 +131,59 @@ namespace Quiz_app
                 string filePath = Console.ReadLine();
                 quiz.LoadQuestionsFromCSV(filePath, context);
             }
+        }
+        static void StudentDashboard(User user, QuizContext context)
+        {
+            Console.WriteLine("\nWelkom student!");
+            Console.WriteLine("\nDe quiz gaat beginnen!");
+
+            int correctAnswers = 0;
+            QuizResult quizResult = new QuizResult
+            {
+                UserId = user.UserId,
+                CorrectAnswers = 0 
+            };
+            context.QuizResults.Add(quizResult);
+            context.SaveChanges(); 
+
+            foreach (Question question in context.Questions.ToList())
+            {
+                Console.WriteLine($"\n{question.Text}");
+                Console.WriteLine($"A: {question.AnswerA}");
+                Console.WriteLine($"B: {question.AnswerB}");
+                Console.WriteLine($"C: {question.AnswerC}");
+                Console.Write("Uw antwoord (A/B/C): ");
+
+                string answer = Console.ReadLine().ToLower();
+                bool isCorrect = answer == question.CorrectAnswer.ToString().ToLower();
+
+               
+                StudentAnswer studentAnswer = new StudentAnswer
+                {
+                    QuestionId = question.Id,
+                    QuizResultId = quizResult.QuizResultId,
+                    AnswerGiven = answer,
+                    IsCorrect = isCorrect,
+                    Feedback = null 
+                };
+
+                context.StudentAnswers.Add(studentAnswer);
+
+                if (isCorrect)
+                {
+                    correctAnswers++;
+                    Console.WriteLine("Correct!");
+                }
+                else
+                {
+                    Console.WriteLine($"Fout! Het juiste antwoord is {question.CorrectAnswer.ToString().ToUpper()}.");
+                }
+            }
+
+            quizResult.CorrectAnswers = correctAnswers;
+            context.SaveChanges();
+
+            Console.WriteLine($"\nJe hebt {correctAnswers} van de {context.Questions.Count()} vragen correct beantwoord.");
         }
     }
 }

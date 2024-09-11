@@ -15,6 +15,6 @@ namespace Quiz_app.Model
         public QuizResult QuizResult { get; set; }
         public string AnswerGiven { get; set; }
         public bool IsCorrect { get; set; }
-        public string Feedback { get; set; } // Feedback van de docent
+        public string? Feedback { get; set; } // Feedback van de docent
     }
 }

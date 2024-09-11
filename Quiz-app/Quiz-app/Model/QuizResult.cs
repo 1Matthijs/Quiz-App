@@ -12,6 +12,6 @@ namespace Quiz_app.Model
         public int UserId { get; set; }
         public User User { get; set; }
         public int CorrectAnswers { get; set; }
-        public string Feedback { get; set; }
+        public string ?Feedback { get; set; }
     }
 }
