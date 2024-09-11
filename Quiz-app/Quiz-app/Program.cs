@@ -146,16 +146,31 @@ namespace Quiz_app
         static void StudentDashboard(User user, QuizContext context)
         {
             Console.WriteLine("\nWelkom student!");
+            Console.WriteLine("[1]  Maak quiz");
+            Console.WriteLine("[2]  zie foute antwoorden");
+            string choice = Console.ReadLine();
+            if (choice == "1") {
+                MakeQuiz(user, context);
+            }
+            if (choice == "2") {
+                ShowIncorrectAnswersForStudent(user, context);
+
+            }
+
+        }
+
+            static void MakeQuiz(User user, QuizContext context)
+        {
             Console.WriteLine("\nDe quiz gaat beginnen!");
 
             int correctAnswers = 0;
             QuizResult quizResult = new QuizResult
             {
                 UserId = user.UserId,
-                CorrectAnswers = 0 
+                CorrectAnswers = 0
             };
             context.QuizResults.Add(quizResult);
-            context.SaveChanges(); 
+            context.SaveChanges();
 
             foreach (Question question in context.Questions.ToList())
             {
@@ -168,14 +183,14 @@ namespace Quiz_app
                 string answer = Console.ReadLine().ToLower();
                 bool isCorrect = answer == question.CorrectAnswer.ToString().ToLower();
 
-               
+
                 StudentAnswer studentAnswer = new StudentAnswer
                 {
                     QuestionId = question.Id,
                     QuizResultId = quizResult.QuizResultId,
                     AnswerGiven = answer,
                     IsCorrect = isCorrect,
-                    Feedback = null 
+                    Feedback = null
                 };
 
                 context.StudentAnswers.Add(studentAnswer);
@@ -295,6 +310,71 @@ namespace Quiz_app
                 {
                     Console.WriteLine("Ongeldige keuze. Probeer het opnieuw.");
                 }
+            }
+        }
+        static void ShowIncorrectAnswersForStudent(User user, QuizContext context)
+        {
+            {
+
+                QuizResult quizResult = context.QuizResults
+                                        .Where(qr => qr.UserId == user.UserId)
+                                        .FirstOrDefault();
+
+                if (quizResult == null)
+                {
+                    Console.WriteLine("Geen quizresultaten gevonden voor deze student.");
+                    return;
+                }
+
+             
+                List<StudentAnswer> studentAnswers = new List<StudentAnswer>();
+
+                foreach (StudentAnswer studentAnswer in context.StudentAnswers)
+                {
+                    if (studentAnswer.QuizResultId == quizResult.QuizResultId)
+                    {
+                        studentAnswers.Add(studentAnswer);
+                    }
+                }
+
+                if (studentAnswers.Count == 0)
+                {
+                    Console.WriteLine("Geen antwoorden gevonden voor deze quiz.");
+                    return;
+                }
+
+                Console.WriteLine($"\nResultaten voor student: {user.Username}\n");
+
+                foreach (StudentAnswer answer in studentAnswers)
+                {
+                    Question question = context.Questions.SingleOrDefault(q => q.Id == answer.QuestionId);
+                    if (question != null)
+                    {
+                        Console.WriteLine($"\nVraag: {question.Text}");
+                        Console.WriteLine($"Uw antwoord: {answer.AnswerGiven.ToUpper()}");
+
+                        if (!answer.IsCorrect)
+                        {
+                         
+                            Console.WriteLine("Status: FOUT");
+                            char correctAnswer = question.CorrectAnswer;
+                            Console.WriteLine($"Correct antwoord: {correctAnswer.ToString().ToUpper()}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Status: CORRECT");
+                        }
+                    }
+                }
+
+            
+                int correctAnswers = quizResult.CorrectAnswers;
+                int totalQuestions = studentAnswers.Count;
+                double percentage = ((double)correctAnswers / totalQuestions) * 100;
+                Console.WriteLine($"\nU heeft {correctAnswers}/{totalQuestions} correcte antwoorden.");
+                Console.WriteLine($"Percentage: {percentage:F2}%");
+
+                
             }
         }
 
