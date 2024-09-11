@@ -8,7 +8,7 @@ namespace Quiz_app.Model
 {
     internal class Question
     {
-        public int QuestionId { get; set; }
+        public int  Id { get; set; }
         public string Text { get; set; }
         public string AnswerA { get; set; }
         public string AnswerB { get; set; }

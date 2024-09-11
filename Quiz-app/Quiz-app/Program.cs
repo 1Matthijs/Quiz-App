@@ -15,7 +15,7 @@ namespace Quiz_app
         static void Main(string[] args)
         {
             bool program = true;
-            using (var context = new QuizContext())
+            using (QuizContext context = new QuizContext())
             {
                
 
@@ -28,13 +28,13 @@ namespace Quiz_app
 
                     if (choice == "1")
                     {
-                        var user = Login(context);
+                        User user = Login(context);
                         if (user != null)
                         {
                             if (user.IsTeacher)
                             {
                                 Console.WriteLine("login as teacher succes");
-
+                                TeacherDashBoard(user, context);
                             }
                             else
                             {
@@ -65,7 +65,7 @@ namespace Quiz_app
                 Console.Write("Wachtwoord: ");
                 string password = Console.ReadLine();
 
-                var user = context.Users.SingleOrDefault(u => u.Username == username && u.Password == password);
+                User user = context.Users.SingleOrDefault(u => u.Username == username && u.Password == password);
                 if (user != null)
                 {
                     Console.WriteLine("Inloggen succesvol!");
@@ -105,7 +105,7 @@ namespace Quiz_app
             }
 
 
-            var user = new User
+            User user = new User
             {
                 Username = username,
                 Password = password,
@@ -117,6 +117,19 @@ namespace Quiz_app
             Console.WriteLine("Registratie succesvol! Je kunt nu inloggen.");
 
 
+        }
+        static void TeacherDashBoard(User user, QuizContext context)
+        {
+            Console.WriteLine("welkom op het teacher dashboard");
+            Console.WriteLine("[1]  upload vragen");
+            string choice = Console.ReadLine();
+            if(choice == "1")
+            {
+                Quiz quiz = new Quiz();
+                Console.WriteLine("copier het pad naar het csv bestand en plak het hier");
+                string filePath = Console.ReadLine();
+                quiz.LoadQuestionsFromCSV(filePath, context);
+            }
         }
     }
 }
