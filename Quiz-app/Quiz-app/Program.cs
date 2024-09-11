@@ -3,6 +3,7 @@ using Quiz_app.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace Quiz_app
             using (QuizContext context = new QuizContext())
             {
                
-
+                //program
                 while (program)
                 {
                     Console.Clear();
@@ -57,6 +58,7 @@ namespace Quiz_app
             }
         }
 
+        // Basic login Function
         static User Login(QuizContext context)
         {
             Console.Clear();
@@ -83,6 +85,8 @@ namespace Quiz_app
             return null;
         }
 
+
+        //basic register function
         static void Register(QuizContext context)
         {
             bool register = true;
@@ -91,6 +95,7 @@ namespace Quiz_app
 
             while (register)
             {
+                Console.Clear();
                 Console.Write("Gebruikersnaam: ");
                 username = Console.ReadLine();
                 Console.Write("Wachtwoord: ");
@@ -102,9 +107,8 @@ namespace Quiz_app
                 else
                 {
                     register = false;
-                    Console.WriteLine(password, username);
-                   
-                }                                   
+                }     
+                
             }
 
 
@@ -121,10 +125,12 @@ namespace Quiz_app
             next();
 
         }
+
+        // this is the  Teacher DashBoard here you get a menu to choose what you want to do
         static void TeacherDashBoard(User user, QuizContext context)
         {
             Console.Clear();
-            Console.WriteLine("welkom op het teacher dashboard");
+            Console.WriteLine("welkom op het docenten bord");
             Console.WriteLine("[1]  upload vragen");
             Console.WriteLine("[2]  geef feedback");
             Console.WriteLine("[3]  Verwijder Vragen");
@@ -146,6 +152,8 @@ namespace Quiz_app
             }
             return;
         }
+
+        // this is the  student DashBoard here you get a menu to choose what you want to do
         static void StudentDashboard(User user, QuizContext context)
         {   Console.Clear();
             Console.WriteLine("\nWelkom student!");
@@ -161,7 +169,7 @@ namespace Quiz_app
             }
 
         }
-
+            //in this function the user makes the quiz
             static void MakeQuiz(User user, QuizContext context)
         {
             Console.Clear();
@@ -217,6 +225,8 @@ namespace Quiz_app
             Console.WriteLine($"\nJe hebt {correctAnswers} van de {context.Questions.Count()} vragen correct beantwoord.");
             next();
         }
+
+        //in this function the teacher gives feedback to each question of an selected student
         static void GiveFeedbackToStudent(QuizContext context)
         {
             {
@@ -275,6 +285,8 @@ namespace Quiz_app
                 next();
             }
         }
+
+        //here a teacher can delete questions from the quiz
         static void DeleteQuestion(QuizContext context)
         {
             {
@@ -323,6 +335,8 @@ namespace Quiz_app
                 next();
             }
         }
+
+        // here can a student see the questions he answerd
         static void ShowIncorrectAnswersForStudent(User user, QuizContext context)
         {
             {
@@ -387,6 +401,8 @@ namespace Quiz_app
                 next();
             } 
         }
+
+        //function to clear screen and go to the next item
         static void next()
         {
             Console.Write("\nklik op enter om door te gaan");

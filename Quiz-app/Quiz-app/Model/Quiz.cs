@@ -17,7 +17,7 @@ namespace Quiz_app.Model
             {
                 var lines = File.ReadAllLines(filePath);
 
-                foreach (var line in lines.Skip(1))  // Skip header if present
+                foreach (var line in lines.Skip(1)) 
                 {
                     var data = line.Split(';');
                     if (data.Length == 6)
@@ -48,7 +48,7 @@ namespace Quiz_app.Model
                     }
                 }
 
-                context.SaveChanges();  // Save changes to the database
+                context.SaveChanges();  
                 Console.WriteLine("Vragen succesvol ingeladen en opgeslagen in de database.");
             }
             catch (Exception ex)
@@ -57,17 +57,6 @@ namespace Quiz_app.Model
             }
         }
 
-
-
-        public void StartQuiz()
-        {
-           
-        }
-
-        public void CalculateScore()
-        {
-           
-        }
 
     }
 }
